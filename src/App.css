@@ -1,38 +1,221 @@
-.App {
-  text-align: center;
+/* General Layout */
+
+body {
+  font-family: Arial, sans-serif;
+  background-image: url("https://i.pinimg.com/736x/b7/bf/67/b7bf672d421bfa0135329ce3d653f626.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+.app-container {
+  padding: 50px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Form Styling */
+.input-section {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  gap: 15px;
+  margin-bottom: 50px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.field label {
+  color: #000000;
+  font-size: 19px;
+}
+
+.field input, .field textarea {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.submit-btn {
+  background-color: #1d4ed8; /* Specific blue from your image */
   color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  margin-top: 10px;
 }
 
-.App-link {
-  color: #61dafb;
+/* Task Grid */
+.total-count {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.task-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
+  gap: 20px;
+}
+
+.task-card {
+  border: 1px solid #555; /* Darker border like your image */
+  padding: 20px;
+  background-color: rgb(184, 247, 247);
+  border-radius: 4px;
+}
+
+.task-card h2 {
+  margin: 0 0 10px 0;
+  font-size: 28px;
+}
+
+.task-card p {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Buttons inside Cards */
+.card-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.update-btn {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.delete-btn {
+  background-color: #ef4444;
+  color: white;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+/* Strikethrough for completed tasks */
+.completed-text {
+  text-decoration: line-through;
+  color: #9ca3af; /* Gray out the text */
+}
+
+/* Optional: change card border when completed */
+.task-card.completed-card {
+  border-color: #d1d5db;
+  background-color: #f9fafb;
+}
+
+/* Undo button style (usually a subtle gray or green) */
+.undo-btn {
+  background-color: #6b7280;
+  color: white;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.complete-btn {
+  background-color: #10b981; /* Green */
+  color: white;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Styling for the deleted/finished look */
+del {
+  color: #888;
+  text-decoration: line-through;
+}
+
+.completed-card {
+  background-color: #f8f9fa;
+  border-color: #ccc !important;
+}
+
+.complete-btn {
+  background-color: #22c55e; /* Green */
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.undo-btn {
+  background-color: #6b7280; /* Gray */
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.edit-mode {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.edit-input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #2563eb;
+  border-radius: 4px;
+  font-family: inherit;
+}
+
+/* Specific button color for Save */
+.complete-btn {
+  background-color: #10b981; /* Green for Save */
+}
+/* Task Grid - Mobile First (Vertical by default) */
+.task-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* Single column for mobile */
+  gap: 20px;
+}
+
+/* Tablet and Desktop View (Horizontal) */
+@media (min-width: 768px) {
+  .task-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns for tablets */
   }
-  to {
-    transform: rotate(360deg);
+}
+
+@media (min-width: 1024px) {
+  .task-grid {
+    grid-template-columns: repeat(3, 1fr); /* 3 columns for desktop */
+  }
+}
+
+/* Adjust container padding for mobile so it's not too cramped */
+@media (max-width: 600px) {
+  .app-container {
+    padding: 20px;
+  }
+  
+  .total-count {
+    font-size: 24px;
+  }
+  
+  .task-card h2 {
+    font-size: 22px;
   }
 }
